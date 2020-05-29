@@ -23,6 +23,12 @@ class Image(models.Model):
         updated_caption = cls.objects.get(id=id)
         return updated_image
 
+    @classmethod
+    def search_image(cls,search_term):
+        images = cls.objects.filter(img_name__icontains=search_term)
+        return images
+
+
 
 class Profile(models.Model):
     profile_photo = models.CharField(max_length=30)

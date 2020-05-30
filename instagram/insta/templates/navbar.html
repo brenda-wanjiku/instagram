@@ -13,13 +13,14 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="{% url 'homepage' %}">Insta-pic</a>
+                    <a class="nav-link" href="/accounts/login">Login</a>
                 </div>
             </div>
     </div>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul id="navbar-list" class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">

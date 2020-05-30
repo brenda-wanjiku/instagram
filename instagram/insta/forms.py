@@ -1,4 +1,7 @@
-from django import forms
+from django.forms import ModelForm
+from .models import Image
 
-class classname(object):
-    pass
+class AddImageForm(ModelForm):
+    class Meta:
+        model = Image
+        exclude = ['comments', 'likes', '']

@@ -12,7 +12,7 @@ class Image(models.Model):
     image = models.ImageField(upload_to='insta/')
     img_name = models.CharField(max_length=60)
     caption = models.CharField(max_length=100)
-    profile = models.ForeignKey(User, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     likes = models.CharField(max_length=30)
     comments = models.CharField(max_length=30)
 
@@ -42,8 +42,8 @@ class Profile(models.Model):
     '''
     Class that defines the Profile attributes
     '''
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_photo = models.CloudinaryField('image')
+    profile = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_photo =  models.ImageField(upload_to='insta/')
     bio = models.CharField(max_length=200,blank=True)
 
     def __str__(self):

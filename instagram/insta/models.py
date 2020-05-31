@@ -41,7 +41,7 @@ class Profile(models.Model):
     '''
     Class that defines the Profile attributes
     '''
-    profile = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile = models.OneToOneField(User, on_delete=models.CASCADE,default="")
     profile_photo =  models.ImageField(upload_to='insta/')
     bio = models.CharField(max_length=200,blank=True)
 

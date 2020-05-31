@@ -1,0 +1,56 @@
+h1, h2,h3,p{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1{
+    font-style: bold;
+    font-size: 61px;
+}
+
+h2{
+    font-style: bold;
+    font-size: 41px;
+}
+
+h3{
+    font-style: bold;
+    font-size: 27px;
+    display: inline-block;
+    clear: right;
+}
+
+p{
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1.4em;
+}
+
+.post{
+    width: 80%;    
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+
+.container .image-title{
+    display: block;
+}
+
+.image-post{
+    text-align: center;
+}
+.image-container .img-post{
+    width: 200px;
+    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    overflow: hidden;    
+}
+body{
+   background-color:#FAFAFA ; 
+}

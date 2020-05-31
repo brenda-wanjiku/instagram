@@ -4,17 +4,31 @@
 
 {% block styles %}
 {% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/base.css'%}">
 {% endblock %}
 
 {% block content%}
 {{block.super}}
+
 <div class="container">
-<h1 class="text-center"> Homepage</h1>
-{% for image in images%}
-<p> {{image.img_name}}</p>
-<p> {{image.caption}}</p>
-<p> {{image.comments}}</p>
-<img src="{{image.image.url}}" class="img-responsive" alt="image">
+
+    <h1 class="text-center"> Homepage</h1>
+    {% for image in images%}
+    <div class="post">
+        <div class="image-title">
+            <img src="{{image.image.url}}" class="avatar" class="img-responsive" alt="image">
+            <h3>{{image.profile}}<a> </a></h3>
+        </div>
+
+        <div class="image-contaier">
+            <img src="{{image.image.url}}" class="img-post img-responsive" alt="image">
+        </div>
+        
+    </div>
+
+    <p> {{image.caption}}</p>
+
+
 </div>
 {% endfor %}
 {% endblock %}

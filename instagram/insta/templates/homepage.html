@@ -14,19 +14,25 @@
 
     <h1 class="text-center"> Homepage</h1>
     {% for image in images%}
-    <div class="post">
-        <div class="image-title">
-            <img src="{{image.image.url}}" class="avatar" class="img-responsive" alt="image">
-            <h3>{{image.profile}}<a> </a></h3>
-        </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="thumbnail">
+                <div class="post">
+                    <div class="image-title">
+                        <img src="{{image.image.url}}" class="avatar" class="img-responsive" alt="image">
+                        <h3>{{image.profile}}<a> </a></h3>
+                    </div>
 
-        <div class="image-contaier">
-            <img src="{{image.image.url}}" class="img-post img-responsive" alt="image">
+                    <div class="image-contaier">
+                        <img src="{{image.image.url}}" class="img-post img-responsive" alt="image">
+                    </div>
+
+                </div>
+
+                <p> {{image.caption}}</p>
+            </div>
         </div>
-        
     </div>
-
-    <p> {{image.caption}}</p>
 
 
 </div>

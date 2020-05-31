@@ -2,7 +2,11 @@
 {% block content %}
 <div class="container">
     <h1>{{profile.user}}</h1>
+    <img src="{{profile.profile_photo.url}}" alt="">
+    {% if profile.bio %}
     <p>{{profile.bio}}</p>
+    {% endif %}
+    <button class = "btn btn-outline-success btn-lg"><a href="{% url 'update_profile' %}">Edit Profile</a></button>
 
 
     <h2>Images</h2>

@@ -37,7 +37,7 @@ class Image(models.Model):
         return images
 
     @classmethod
-    def get_profile_images(cls,profile):
+    def get_images(cls,profile):
         return cls.objects.filter(profile = profile)
 
 

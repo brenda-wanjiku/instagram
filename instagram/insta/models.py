@@ -12,7 +12,6 @@ class Image(models.Model):
     image = models.ImageField(upload_to='insta/')
     img_name = models.CharField(max_length=60)
     caption = models.CharField(max_length=100)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     likes = models.CharField(max_length=30)
     comments = models.CharField(max_length=30)
 

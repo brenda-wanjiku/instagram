@@ -37,7 +37,7 @@ class Image(models.Model):
         return images
 
     @classmethod
-    def get_images(cls,profile):
+    def get_profile_images(cls,profile):
         return cls.objects.filter(profile = profile)
 
 
@@ -47,7 +47,7 @@ class Profile(models.Model):
     Class that defines the Profile attributes
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE,default="")
-    profile_photo =  models.ImageField(upload_to='insta/')
+    profile_photo =models.ImageField(upload_to='insta/')
     bio = models.CharField(max_length=200,blank=True)
 
     def __str__(self):

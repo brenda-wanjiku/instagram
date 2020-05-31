@@ -14,12 +14,12 @@ def homepage(request):
 
 @login_required
 def search_results(request):
-    if 'image' in request.GET and request.GET['image']:
-        searched_term = request.GET.get('image')
-        searched_images = Image.search_image(searched_term)
-        message = f"{searched_images}"
+    if 'user' in request.GET and request.GET['user']:
+        searched_term = request.GET.get('user')
+        profiles = Profile.search_user(searched_term)
+        message = f"{searched_term}"
         
-        return render(request, 'search.html', {'message':message,'images':images})
+        return render(request, 'search.html', {'message':message,'profiles':profiles})
 
     else:
         message = "You haven't searched for any term"

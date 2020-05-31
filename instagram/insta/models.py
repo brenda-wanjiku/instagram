@@ -31,10 +31,7 @@ class Image(models.Model):
         updated_caption = cls.objects.get(id=id)
         return updated_image
 
-    @classmethod
-    def search_image(cls,search_term):
-        images = cls.objects.filter(img_name__icontains=search_term)
-        return images
+   
 
     @classmethod
     def get_images(cls,profile):
@@ -53,6 +50,9 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+    @classmethod
+    def search_user(cls,search_term):
+        return User.objects.filter(username__icontains=search_term)
 
     @receiver(post_save, sender=User)
     def create_profile(sender,instance,created, **kwargs):

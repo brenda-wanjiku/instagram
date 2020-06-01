@@ -13,7 +13,7 @@ class Image(models.Model):
     img_name = models.CharField(max_length=60)
     caption = models.CharField(max_length=100)
     profile = models.ForeignKey(User, on_delete=models.CASCADE,default="")
-    likes = models.CharField(max_length=30)
+    likes = models.ManyToManyField(User, related_name="img_post")
     comments = models.CharField(max_length=30)
 
     def __str__(self):
@@ -31,6 +31,8 @@ class Image(models.Model):
         updated_caption = cls.objects.get(id=id)
         return updated_image
 
+    def like_count(self):
+        return self.likes.count()
    
 
     @classmethod

@@ -95,8 +95,25 @@ def get_images(request,id):
     '''
     image = Image.objects.get(pk=id)
     comments = Comment.get_image_comment(image)
+    total_likes = image.like_count()
+    liked = False
+    if image.likes.filter(id =request.user.id).exists():
+        liked = True
 
-    return render(request, 'image.html',{"image": image, "comments": comments})
- 
 
+    return render(request, 'image.html',{"image": image, "comments": comments, "total_likes": total_likes, "liked" : liked })
  
+@login_required
+def like_image(request,id):
+    '''
+    Add and delete likes
+    '''
+    image = Image.objects.get(pk=id)
+    liked = False
+    if image.likes.filter(id=request.user.id).exists():
+        image.likes.remove(request.user)
+        liked = False
+    else:
+        image.likes.add(request.user)
+        liked = True 
+    return HttpResponseRedirect(reverse('get_images',args =[int(image.id)]))

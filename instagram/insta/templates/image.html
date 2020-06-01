@@ -19,16 +19,36 @@
     <hr>
     <p>{{image.caption}}</p>
 
+    {% if liked %}
+    <form action="{% url 'like_image' image.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" name="image_id" value={{image.id}} class="btn btn-danger btn-sm">
+            Unlike</button>
+    </form>
+    {% else %}
+
+    <form action="{% url 'like_image' image.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" name="image_id" value={{image.id}} class="btn btn-success btn-sm" ">
+            Like </button>
+
+    </form>
+    {% endif %}
+
+    <p> {{total_likes}} likes  </p>
+
+<hr>
+
 
 </div>
 {% for comment in comments %}
-<h3 style="font-size: 20px; color: darkgreen;"><i class="fa fa-user" aria-hidden="true">
-        {{comment.user}}</i></h3>
-<p>{{comment.content}}</p>
+<h3 style=" font-size: 20px; color: darkgreen;"><i class="fa fa-user" aria-hidden="true">
+                {{comment.user}}</i></h3>
+            <p>{{comment.content}}</p>
 
-<p class="text-muted" style="font-size: 10px;">posted {{comment.pub_date | timesince}} ago </p>
-<hr>
-{% endfor %}
-{%endblock%}
+            <p class="text-muted" style="font-size: 10px;">posted {{comment.pub_date | timesince}} ago </p>
+            <hr>
+            {% endfor %}
+            {%endblock%}
 
 </div>

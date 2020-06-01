@@ -6,7 +6,8 @@
     {% if profile.bio %}
     <p>{{profile.bio}}</p>
     {% endif %}
-    <button class = "btn btn-outline-success btn-lg"><a href="{% url 'update_profile' %}">Edit Profile</a></button>
+    <a href="{% url 'update_profile' %}"><span style="font-size:30px; color:black"><i
+        class="fas fa-user-edit"></i></span></a>
 
 
     <h2>Images</h2>

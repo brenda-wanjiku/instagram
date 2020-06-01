@@ -54,3 +54,7 @@ p{
 body{
    background-color:#FAFAFA ; 
 }
+.card .thumbnail{
+    text-align: center;
+
+}

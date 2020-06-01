@@ -2,9 +2,9 @@ from django.test import TestCase
 
 # Create your tests here.
 class ImageTestClass(TestCase):
-    def setUp(self)
+    def setUp(self) -> None:
         # creating a new user and saving it
-        self.new_user = User(password='brownsugar', username='ian', first_name='ian', last_name='mark',
+        self.new_user = User(password='weareone', username='ian', first_name='ian', last_name='mark',
                              email='imk@gmail.com')
         self.new_user.save()
 

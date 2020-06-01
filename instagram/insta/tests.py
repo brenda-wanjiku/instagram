@@ -3,18 +3,22 @@ from django.test import TestCase
 # Create your tests here.
 class ImageTestClass(TestCase):
     def setUp(self)
-        # creating a new user and saving it
-        self.new_user = User(password='brownsugar', username='ian', first_name='ian', last_name='mark',
-                             email='imk@gmail.com')
+        ''' 
+        creating a new user and saving it
+        '''
+        self.new_user = User(password='brownsugar',  email = "bs@gmail.com",password = "bswopqd")
         self.new_user.save()
 
-        # creating a new profile and saving it
-        self.new_profile = Profile(profile_pic='imk.jpg', bio='hello')
+        '''
+        creating a new profile and saving it
+        '''
+        self.new_profile = Profile(profile_photo='photo.jpg', bio='Nice')
         self.new_profile.save()
 
-        # creating a new image and saving it
-        self.new_image = Image(image='color.jpg', image_name='colors', image_caption='beautiful colors', likes=1,
-                               dislikes=0, comments='i like it', profile=self.new_profile)
+        '''
+        creating a new image and saving it
+        '''
+        self.new_image = Image(image='image.jpg', img_name='house',caption='old house', likes=1, comments='i like it', profile=self.new_profile)
         self.new_image.save()
 
     def tearDown(self) -> None:
@@ -23,95 +27,77 @@ class ImageTestClass(TestCase):
         Profile.objects.all().delete()
 
     def test_instance(self):
+        '''
+        This will test whether the new image created is an instance of the Image class
+        '''
         self.assertTrue(isinstance(self.new_image, Image))
         self.assertTrue(isinstance(self.new_profile, Profile))
         self.assertTrue(isinstance(self.new_user, User))
 
     def test_save_image_method(self):
+        '''
+        Tests whether new image is added
+        '''
         self.new_image.save_image()
         images = Image.objects.all()
         self.assertTrue(len(images) > 0)
 
     def test_delete_image(self):
+        '''
+        Tests whether new image is deleted
+        '''
         self.new_image.save_image()
         self.new_image.delete_image()
         images = Image.objects.all()
         self.assertTrue(len(images) == 0)
 
     def test_update_caption(self):
+        '''
+        Tests whether the image is updated
+        '''
         self.new_image.save_image()
-        updated_caption = Image.update_caption(self.new_image.id, 'bad colors')
-        self.assertEqual(updated_caption.image_caption, 'bad colors')
+        updated_caption = Image.update_caption(self.new_image.id, 'old house')
+        self.assertEqual(updated_caption.image_caption, 'old house')
 
 
-from django.test import TestCase
-from .models import Image, Comment, Profile
-from django.contrib.auth.models import User
-
-
-class ImageTestClas(TestCase):
-    '''
-    Class that tests the images
-    '''
-    def setUp(self):
-        '''
-        Creates new instances before a test
-        '''
-        self.diana = User(username = "diana", email = "diana@gmail.com",password = "12345678")
-        self.sun = Image(image = 'imageurl', name ='sun', caption = 'It is bright', profile = self.diana)
-
-        self.diana.save()
-        self.sun.save_image()
-
-    def tearDown(self):
-        '''
-        Clears database after each test
-        '''
-        Image.objects.all().delete()
-     
-    def test_image_instance(self):
-        '''
-        This will test whether the new image created is an instance of the Image class
-        '''
-        self.assertTrue(isinstance(self.sun, Image))
-
-    def test_save_image_method(self):
-        '''
-        This tests whether new image is added to the db 
-        '''
-        self.sun.save_image()
-        images = Image.objects.all()
-        self.assertTrue(len(images)> 0)
-
-    def test_delete_image(self):
-        '''
-        This tests whether image is deleted
-        '''
-        self.sun.save_image()
-        images1 = Image.objects.all()
-        self.assertEqual(len(images1),1)
-        self.sun.delete_image()
-        images2 = Image.objects.all()
-        self.assertEqual(len(images2),0)
-
-    def test_update_caption(self):
-        '''
-        This tests whether the image is updated
-        '''
-        self.sun.save_image()
-        self.sun.update_caption('Yellow')
-        self.assertEqual(self.sun.caption, 'Yellow')
-
-    def test_get_profile_image_(self):
+    def test_get_image_by_profile(self):
         '''
         This tests whether images for profiles are retrieved
         '''
-        self.sun.save_image
-        self.diana.save()
-        profile_image = Image.get_profile_images(self.diana)
+        self.new_image.save_image
+        self.new_user.save()
+        profile_image = Image.get_images(self.new_user)
         self.assertEqual(len(profile_image),1 )
 
     
+class ProfileTestClass(TestCase):
+
+    def setUp(self) 
+        self.new_profile = Profile(profile_photo='photo.jpg', bio='Nice')
+
+    def tearDown(self)
+        Profile.objects.all().delete()
+
+    def test_save_user_profile(self):
+        self.new_profile.save_user_profile()
+        profiles = Profile.objects.all()
+        self.assertTrue(len(profiles) > 0)
+
+    def test_delete_user_profile(self):
+        self.new_profile.save_user_profile()
+        self.new_profile.delete_user_profile()
+        profiles = Profile.objects.all()
+        self.assertTrue(len(profiles) == 0)
+
+    def test_update_profile_bio(self):
+        self.new_profile.save_user_profile()
+        updated_profile = Profile.update_profile_bio(self.new_profile.id, 'Bad')
+        self.assertEqual(updated_profile.bio, 'Bad')
+
+    def test_update_profile_pic(self):
+        self.new_profile.save_user_profile()
+        updated_profile = Profile.update_profile_pic(self.new_profile.id, 'gp.jpg')
+        self.assertTrue(updated_profile.profile_pic != self.new_profile.profile_pic)
 
 
 class CommentTestClas(TestCase):
@@ -122,30 +108,30 @@ class CommentTestClas(TestCase):
         '''
         Creates new instances before a test
         '''
-        self.diana = User(username = "diana", email = "diana@gmail.com",password = "12345678")
-        self.sun = Image(image = 'imageurl', name ='sun', caption = 'It is bright', profile = self.diana)
-        self.comment = Comment(image=self.sun, content= 'Beautiful', user = self.diana)
+        self.new_image = Image(image='image.jpg', img_name='house',caption='old house', likes=1, comments='i like it', profile=self.new_profile)
+        self.new_profile = Profile(profile_photo='photo.jpg', bio='Nice')
+        self.comment = Comment(image=self.new_image, content= 'Throwback', user = self.new_profile)
 
-        self.diana.save()
-        self.sun.save_image()
+        self.new_profile.save()
+        self.new_image.save_image()
         self.comment.save_comment()
 
     def tearDown(self):
         '''
-        Clears database after each test
+        Clears data after test
         '''
         Image.objects.all().delete()
         Comment.objects.all().delete()
 
     def test_comment_instance(self):
         '''
-        This will test whether the new comment created is an instance of the Comment class
+        Tests whether the new comment created is an instance of Comment class
         '''
         self.assertTrue(isinstance(self.comment, Comment))
 
     def test_save_comment_method(self):
         '''
-        This tests whether new comment is added to the db 
+        Tests whether new comment is added 
         '''
         self.comment.save_comment()
         comments = Comment.objects.all()
@@ -153,7 +139,7 @@ class CommentTestClas(TestCase):
 
     def test_delete_comment(self):
         '''
-        This tests whether comment is deleted
+        Tests whether comment is deleted
         '''
         self.comment.save_comment()
         comments1 = Comment.objects.all()
@@ -164,41 +150,9 @@ class CommentTestClas(TestCase):
 
     def test_get_image_comments(self):
         '''
-        This tests whether comments can be obtained by image id
+        Tests whether comments can be retrieved by image
         '''
-        comments = Comment.get_image_comments(self.sun)
+        comments = Comment.get_image_comment(self.new_image)
         self.assertTrue(len(comments) > 0)
     
 
-class ProfileTestClas(TestCase):
-    '''
-    Class that tests the profile
-    '''
-    def setUp(self):
-        '''
-        Creates new instances before a test
-        '''
-        self.diana = User(username = "diana", email = "diana@gmail.com",password = "12345678")
-        self.diana.save()
-        
-
-    def tearDown(self):
-        '''
-        Clears database after each test
-        '''
-        Profile.objects.all().delete()
-        User.objects.all().delete()
-     
-    def test_image_instance(self):
-        '''
-        This will test whether the new image created is an instance of the Image class
-        '''
-        self.assertTrue(isinstance(self.diana.profile , Profile))
-
-    def test_search_user(self):
-        '''
-        This tests whether search method is functioning well
-        '''
-        self.diana.save()
-        user = Profile.search_user(self.diana)
-        self.assertEqual(len(user), 1)

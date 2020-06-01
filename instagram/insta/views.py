@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from .models import Image,Profile
 from .forms import AddImageForm, EditProfileForm
 from django.contrib.auth.decorators import login_required
@@ -70,3 +71,14 @@ def update_profile(request):
     else:
         form = EditProfileForm()
     return render(request, 'update_profile.html', {"form": form})
+
+
+
+def get_images(request,id):
+    '''
+    Gets the image details
+    '''
+    image = Image.objects.get(pk=id)
+
+    return render(request, 'image.html',{"image": image})
+ 

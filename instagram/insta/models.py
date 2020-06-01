@@ -62,3 +62,26 @@ class Profile(models.Model):
     @receiver(post_save,sender=User)
     def save_profile(sender,instance, **kwargs):
         instance.profile.save()
+
+
+class Comment(models.Model):
+    '''
+    Class that defines the Profile attributes
+    '''
+    content = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ForeignKey(Image, on_delete= models.CASCADE)
+    pub_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.content
+
+    def save_comment(self):
+        self.save()
+
+    def delete_comment(self):
+        self.delete()
+
+    @classmethod
+    def get_image_comments(cls,image):
+        return cls.objects.filter(image =image)

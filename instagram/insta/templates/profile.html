@@ -1,21 +1,31 @@
 {% extends 'base.html'%}
 {% block content %}
 <div class="container">
-    <h1>{{profile.user}}</h1>
-    <img src="{{profile.profile_photo.url}}" alt="">
-    {% if profile.bio %}
-    <p>{{profile.bio}}</p>
-    {% endif %}
-    <a href="{% url 'update_profile' %}"><span style="font-size:30px; color:black"><i
-        class="fas fa-user-edit"></i></span></a>
+    <div class="profile">
+        <div class="row">
+            <img src="{{profile.profile_photo.url}}" class="avatar" alt="">
+            <h1>{{profile.user}}</h1>
+
+        </div>
+      
+
+        {% if profile.bio %}
+        <h2>Bio: {{profile.bio}}</h2>
+        <hr>
+        <hr>
+        {% endif %}
+        <button>
+            <a href="{% url 'update_profile' %}"><span style="font-size:50px; color:black"><i
+                        class="fas fa-user-edit"></i></span></a></button>
 
 
-    <h2>Images</h2>
-    {% for image in images %}
-    <img src="{{image.image.url}}" alt="">
-    <p>{{image.name}}</p>
-    <p>{{image.caption}}</p>
-    {% endfor %}
 
+        <h2>Posts</h2>
+        {% for image in images %}
+        <img src="{{image.image.url}}" alt="">
+        <p>{{image.name}}</p>
+        <p>{{image.caption}}</p>
+        {% endfor %}
+    </div>
 </div>
 {% endblock%}

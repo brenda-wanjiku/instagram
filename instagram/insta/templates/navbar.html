@@ -36,10 +36,12 @@
                 <div class="navbar-right">
                     <ul id="navbar-list" class="navbar-nav mr-auto mt-2 mt-lg-0">
                         {% if user.is_authenticated %}
+                        
                         <li>
                             <a class="nav-link" href="/profile"><span style="font-size:30px; color:black"><i
                                         class="fas fa-user"></i></span></a>
                         </li>
+               
                         <li>
                             <a class="nav-link" href="/upload_image"><span style="font-size:30px; color:black"><i
                                         class="fas fa-camera"></i></span></a>
@@ -55,28 +57,24 @@
                                         class="fas fa-sign-out-alt"></i></span></a>
                         </li>
                     </ul>
-               
+
                     {% else %}
                     <li>
                         <a class="nav-link" href="/accounts/login">Login</a>
                     </li>
                     {% endif %}
                 </div>
-              
+
         </nav>
 </body>
 <style>
-    .navbar-right{
+    .navbar-right {
         float: right;
         text-align: right;
         margin-left: 550px;
-        t
-     
     }
-    .navbar-left{
-       
-      
-    }
+
+ 
 </style>
 
 </html>

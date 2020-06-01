@@ -85,7 +85,7 @@ def comment(request,id):
     comment = Comment(content = content, user = user, image = image)
     comment.save_comment()
 
-    return HttpResponseRedirect('get_images', args=[int(image.id)])
+    return redirect(get_images,id=id)
 
 
 @login_required

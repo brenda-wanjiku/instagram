@@ -25,36 +25,34 @@ p{
     line-height: 1.4em;
 }
 
-.post{
-    width: 80%;    
+.profile h1{
+    font-size: 40px;
+    margin-top: 30px;
+}
+.profile h2{
+    font-size: 45px;
+    margin-top: 30px;
+
 }
 
-.avatar {
-  vertical-align: middle;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+.profile .avatar {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+.card{
+    margin-left: 250px;
+    margin-top: 20px;
+ 
 }
 
-
-.container .image-title{
-    display: block;
+.image-det button{
+    margin-top: 10px;
 }
 
-.image-post{
-    text-align: center;
-}
-.image-container .img-post{
-    width: 200px;
-    height: 200px;
-    max-width: 200px;
-    max-height: 200px;
-    overflow: hidden;    
-}
-body{
-   background-color:#FAFAFA ; 
-}
-.card .thumbnail{
-    text-align: center;
-
+.search{
+    clear: both;
+    margin-left: clear;
 }

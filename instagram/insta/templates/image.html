@@ -1,36 +1,34 @@
 {% extends 'base.html'%}
 {% block content %}
+
+
 <div class="container">
     <img src="{{image.image.url}}" alt="">
 
-    <form role="add_comment" , action="{% url 'add_comment' image.id %}">
-        {% csrf_token%}
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Comment" name="comment">
-            <div class="input-group-btn">
-                <button class="btn btn-outline-info" type="submit"> Post</button>
-
-            </div>
-        </div>
-    </form>
+    <div class="comment-form">
+        <form action="{% url 'comment' image.id%}" role="comment" enctype="multipart/form-data">
+            {%csrf_token%}
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Comment" name="comment">
+                <div class="input-group-btn">
+                    <button class="btn btn-outline-info" type="submit"> Post</button>
+        </form>
+    </div>
 
     <h2> {{image.profile}} </h2>
     <hr>
     <p>{{image.caption}}</p>
-    <h4>Comments</h4>
-    {% for comment in comments %}
-    <h3 ><i class="fa fa-user" aria-hidden="true">
-            {{comment.user}}</i></h3>
-    <p>{{comment.content}}</p>
 
-    <p class="text-muted" style="font-size: 10px;">posted {{comment.pub_date | timesince}} ago </p>
-    <hr>
-    {% endfor %}
 
 </div>
-</div>
+{% for comment in comments %}
+<h3 style="font-size: 20px; color: darkgreen;"><i class="fa fa-user" aria-hidden="true">
+        {{comment.user}}</i></h3>
+<p>{{comment.content}}</p>
 
-</div>
+<p class="text-muted" style="font-size: 10px;">posted {{comment.pub_date | timesince}} ago </p>
+<hr>
+{% endfor %}
 {%endblock%}
 
 </div>

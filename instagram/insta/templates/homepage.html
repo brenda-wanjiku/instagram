@@ -19,6 +19,7 @@
             <div class="thumbnail">
                 <div class="post">
                     <div class="image-title">
+                        <a href="{% url 'get_images' image.id%}"> Image details</a>
                         <img src="{{image.image.url}}" class="avatar" class="img-responsive" alt="image">
                         <h3>{{image.profile}}<a> </a></h3>
                     </div>

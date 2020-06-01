@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .models import Image,Profile
+from .models import Image,Profile,Comment
 from .forms import AddImageForm, EditProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -74,11 +74,29 @@ def update_profile(request):
 
 
 
+@login_required
+def comment(request,id):
+    '''
+    Adds a comment
+    '''
+    image = Image.objects.get(pk=id)
+    content = request.GET.get('comment')
+    user = request.user
+    comment = Comment(content = content, user = user, image = image)
+    comment.save_comment()
+
+    return HttpResponseRedirect('get_images', args=[int(image.id)])
+
+
+@login_required
 def get_images(request,id):
     '''
     Gets the image details
     '''
     image = Image.objects.get(pk=id)
+    comments = Comment.get_image_comment(image)
 
-    return render(request, 'image.html',{"image": image})
+    return render(request, 'image.html',{"image": image, "comments": comments})
+ 
+
  

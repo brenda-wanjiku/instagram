@@ -55,5 +55,3 @@ The user will require git, django, postgres and python3.8 installed in their mac
 
 ## Licence
 This project is under the [MIT](https://github.com/brenda-wanjiku/instagram/blob/master/LICENSE) licence
-
-Copyright (c) 2020 **Diana Kangangi**

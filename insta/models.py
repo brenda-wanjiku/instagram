@@ -9,7 +9,7 @@ class Image(models.Model):
     '''
     Class that defines Image attributes
     '''
-    image = models.ImageField(upload_to='insta/')
+    image = models.CloudinaryField('image')
     img_name = models.CharField(max_length=60)
     caption = models.CharField(max_length=100)
     profile = models.ForeignKey(User, on_delete=models.CASCADE,default="")
@@ -46,7 +46,7 @@ class Profile(models.Model):
     Class that defines the Profile attributes
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE,default="")
-    profile_photo =models.ImageField(upload_to='insta/')
+    profile_photo =models.CloudinaryField('image')
     bio = models.CharField(max_length=200,blank=True)
 
     def __str__(self):

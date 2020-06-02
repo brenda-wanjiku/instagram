@@ -77,7 +77,7 @@ The user will require git, django, postgres and python3.8 installed in their mac
 
 
 # Live Site
-* Can be accessed here https://brendagallery.herokuapp.com/
+* Can be accessed here https://brenda-instagram.herokuapp.com/
 
 * To log in as an admin you can use the following credentials:
       username : brendawanjiku29 and password: brenda29

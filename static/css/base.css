@@ -42,17 +42,13 @@ p{
     border-radius: 50%;
   }
 
-.card{
-    margin-left: 250px;
-    margin-top: 20px;
- 
-}
+
 
 .image-det button{
     margin-top: 10px;
 }
 
-.search{
-    clear: both;
-    margin-left: clear;
-}
+
+  .card{
+    width: fit-content;
+  }

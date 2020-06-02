@@ -21,34 +21,23 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
-                <div class="navbar-left">
-                    <form class="navbar-form" role="search" , action="{% url 'search_results' %}">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search User" name="user">
-                            <div class="input-group-btn">
-                                <button class="btn btn-outline-info" type="submit"><i
-                                        class="fas fa-search"></i></button>
 
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="navbar-right">
+                <div class="navbar-left">
                     <ul id="navbar-list" class="navbar-nav mr-auto mt-2 mt-lg-0">
                         {% if user.is_authenticated %}
-                        
+
                         <li>
                             <a class="nav-link" href="/profile"><span style="font-size:30px; color:black"><i
                                         class="fas fa-user"></i></span></a>
                         </li>
-               
+
                         <li>
                             <a class="nav-link" href="/upload_image"><span style="font-size:30px; color:black"><i
                                         class="fas fa-camera"></i></span></a>
                         </li>
 
                         <li>
-                            <a class="nav-link" href="/accounts/password/change"><span
+                            <a class="nav-link" href="/accounts/password_change"><span
                                     style="font-size:30px; color:black;"><i class="fas fa-key"></i></span></a>
                         </li>
 
@@ -64,17 +53,25 @@
                     </li>
                     {% endif %}
                 </div>
+                <div class="navbar-right">
+                    <form class="navbar-form" role="search" , action="{% url 'search_results' %}">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search user" name="user">
+                            <div class="input-group-btn">
+                                <button class="btn btn-outline-info" type="submit"><i
+                                        class="fas fa-search"></i></button>
 
+                            </div>
+                        </div>
+                    </form>
+                </div>
         </nav>
 </body>
 <style>
-    .navbar-right {
-        float: right;
-        text-align: right;
-        margin-left: 550px;
-    }
+.navabar-right{
+    margin-right: 500px;
+}
 
- 
 </style>
 
 </html>

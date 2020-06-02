@@ -26,6 +26,14 @@ A clone of the photo-app, Instagram.
 
 ## Set up and Installation
 ### Prerequisites
+* python3.8
+* pip
+* Virtual environment(virtualenv)
+* Django 
+* PostgreSQL
+* Heroku
+* Pillow==7.1.2
+
 The user will require git, django, postgres and python3.8 installed in their machine. To install these two, you can use the following commands
 
 1. git
@@ -40,6 +48,10 @@ The user will require git, django, postgres and python3.8 installed in their mac
 4. postgres
 ```$ sudo apt-get install postgresql postgresql-contrib```
 
+5. django-bootstrap4
+```pip install django-bootstrap4```
+
+
 ### Installation
 1. To access this application on your command line, you need to clone it 
 `https://github.com/brenda-wanjiku/instagram.git`
@@ -52,7 +64,28 @@ The user will require git, django, postgres and python3.8 installed in their mac
 `python3.6 manage.py test insta`
 
 
+### Creating the virtual environment
+* Use the following commands in your terminal to create virtual environment
 
-## Licence
-This project is under the [MIT] licence
+    $ python3.8 -m venv --without-pip virtual
+
+    $ source virtual/bin/env
+
+    $ curl https://bootstrap.pypa.io/get-pip.py | python
+    
+
+
+
+# Live Site
+* Can be accessed here https://brendagallery.herokuapp.com/
+
+* To log in as an admin you can use the following credentials:
+      username : brendawanjiku29 and password: brenda29
+
+
+# Author's Contact
+If you need any clarifications or have feedback on this project , contact the author at brendawanjiku@gmail.com
+
+# License
+This software is Licensed under MIT license Copyright (2020)
 https://raw.githubusercontent.com/brenda-wanjiku/instagram/master/LICENSE
